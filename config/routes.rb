@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'home/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  root 'home#index'
+
   # Defines the root path route ("/")
   # root "articles#index"
+  root 'items#index'  # ルートパスで items コントローラーの index アクションを表示する
+  resources :items  # items コントローラーへのルーティング
 end
