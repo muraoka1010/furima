@@ -26,7 +26,7 @@
 | price               | integer    | null: false                    |
 | shipping_cost_id    | integer    | null: false                    |
 | prefecture_id       | integer    | null: false                    |
-| shipping_days_id    | integer    | null: false                    |
+| shipping_day_id    | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
 
 ### items
@@ -56,4 +56,4 @@
 | purchase            | references | null: false, foreign_key: true |
 
 ### shippingAddresses
-- `belongs_to :purchases`
+- `belongs_to :purchase`
