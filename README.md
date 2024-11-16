@@ -32,12 +32,28 @@
 | item                | references | null: false, foreign_key: true |
 | user                | references | null: false, foreign_key: true |
 
-## shippingAddressesテーブル (発送先情報)
+##  shippingAddresses テーブル (発送先情報)
 | Column              | Type       | Options                        |
 | ------              | ---------- | ------------------------------ |
 | postal_code         | string     | null: false                    |
 | prefecture_id       | integer    | null: false                    |
 | city                | string     | null: false                    |
 | address             | string     | null: false                    |
-| building_name       | string     | null: false                    |
+| building_name       | string     |                                |
 | phone_number        | string     | null: false                    |
+| purchase            | references | null: false, foreign_key: true |
+
+## Models and Associations
+
+### users
+- `has_many :items`
+- `has_many :purchases`
+### items
+- `belongs_to :user`
+- `has_one :purchase`
+### purchases
+- `belongs_to :user`
+- `belongs_to :item`
+- `has_one :shipping_address`
+### shippingAddresses
+- `belongs_to :purchases`
