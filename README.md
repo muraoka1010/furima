@@ -12,6 +12,9 @@
 | first_name_kana     | string     | null: false                    |
 | birth_date          | date       | null: false                    |
 
+### users
+- `has_many :items`
+- `has_many :purchases`
 
 ## itemsテーブル(商品情報)
 | Column              | Type       | Options                        |
@@ -26,11 +29,20 @@
 | shipping_days_id    | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
 
+### items
+- `belongs_to :user`
+- `has_one :purchase`
+
 ## purchases テーブル(購入記録)
 | Column              | Type       | Options                        |
 | ------              | ---------- | ------------------------------ |
 | item                | references | null: false, foreign_key: true |
 | user                | references | null: false, foreign_key: true |
+
+### purchases
+- `belongs_to :user`
+- `belongs_to :item`
+- `has_one :shipping_address`
 
 ##  shippingAddresses テーブル (発送先情報)
 | Column              | Type       | Options                        |
@@ -43,17 +55,5 @@
 | phone_number        | string     | null: false                    |
 | purchase            | references | null: false, foreign_key: true |
 
-## Models and Associations
-
-### users
-- `has_many :items`
-- `has_many :purchases`
-### items
-- `belongs_to :user`
-- `has_one :purchase`
-### purchases
-- `belongs_to :user`
-- `belongs_to :item`
-- `has_one :shipping_address`
 ### shippingAddresses
 - `belongs_to :purchases`
