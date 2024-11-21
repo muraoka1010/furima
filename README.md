@@ -57,3 +57,4 @@
 
 ### shippingAddresses
 - `belongs_to :purchase`
+
