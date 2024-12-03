@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe ItemPurchase, type: :model do
   before do
-    @item_purchase = FactoryBot.build(:item_purchase) # FactoryBotでテスト用データを生成
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @item_purchase = FactoryBot.build(:item_purchase , user_id: user.id, item_id: item.id) # FactoryBotでテスト用データを生成
   end
 
   describe '購入情報の保存' do

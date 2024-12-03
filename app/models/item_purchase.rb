@@ -18,7 +18,7 @@ class ItemPurchase
     # 購入情報を保存
     purchase = Purchase.create(user_id: user_id, item_id: item_id)
     # 配送先情報を保存
-    Address.create(
+    ShippingAddress.create(
       postal_code: postal_code,
       prefecture_id: prefecture_id,
       city: city,
